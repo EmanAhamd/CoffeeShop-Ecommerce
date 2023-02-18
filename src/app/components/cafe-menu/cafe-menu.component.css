@@ -1,0 +1,24 @@
+.brown{
+    color: #722419 !important;
+}
+.lightBrown{
+    color: #db8e44 !important;
+}
+p{
+    cursor: pointer;
+}
+.form-control:focus {
+    color: #722419 !important;
+    border-color: #db8e44 !important;
+    box-shadow: 0 0 0 0.25rem rgba(250, 219, 151, 0.863) !important;
+}
+.btn{
+    background-color: #faa55b !important;
+    border: none !important;
+    margin-bottom: 15px;
+    border-radius: 20px;
+}
+.btn:hover{
+    background-color: #cc9460 !important;
+
+}

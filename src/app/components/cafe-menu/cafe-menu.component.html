@@ -1,0 +1,12 @@
+<div class="container">
+    <div  class="row">
+        <input [(ngModel)]="term" type="text" placeholder="Search" class="form-control w-50 m-auto">
+    </div>
+    <div class=" w-25 d-flex justify-content-around m-auto my-5">
+        <button class="btn btn-dark shadow"  *ngFor="let chip of chips" (click)="filterByCategory(chip)" >{{chip}}</button>
+    </div>
+    <div>
+        <app-menu-item class="mt-5" [items]="FilteriedMenu" [term]="term"
+        (addItem)="addItemToCart($event)"></app-menu-item>
+    </div>
+</div>

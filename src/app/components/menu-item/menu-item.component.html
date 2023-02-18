@@ -1,0 +1,15 @@
+<div class="row text-center m-auto justify-content-evenly">
+    <div class="child_item col-md-5 p-3 shadow" *ngFor="let item of items|search:term">
+        <div class="row ">
+            <div class="col-md-5">
+                <img  src="{{item.url}}" alt="product">
+            </div>
+            <div class="col-md-5">
+                <p class="h3">{{item.name}}</p>
+                <p class="h5">Price: {{item.price}}$</p>
+                <p>Category: {{item.category}}</p>
+                <button class="btn btn-dark" (click)="addItem.emit(item)">Add To Cart</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+<div class="mb-5" >
+    <button type="button" (click)="clearForm()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add">
+        Add new product
+    </button>
+    
+    <div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Add New Product Form-->
+                <form class="row g-3" [formGroup]="Form" >
+                    <div class="form-group col-md-4">
+                        <label for="id">Product_ID</label>
+                        <input formControlName="id" type="number" class="form-control" id="id" >
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="name">Product_name</label>
+                        <input formControlName="name" type="text" class="form-control" id="name">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="category">Product_category</label>
+                        <input formControlName="category" type="text" class="form-control" id="category">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="price">Product_price</label>
+                        <input formControlName="price" type="number" class="form-control" id="price">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="quantity">Intial Quantity</label>
+                        <input formControlName="quantity" type="number" class="form-control" id="quantity">
+                    </div>
+                    <div class=" form-group col-md-6">
+                        <label for="url">Choose photo</label>
+                        <input  type="file"(change)="onChooseFile($event)" class="form-control-file" id="url" >
+                    </div>
+                        
+                    <button [disabled]="Form.invalid" type="submit" class="btn btn-primary"  (click)="addProduct()" data-bs-dismiss="modal"> Add Product</button>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- Display Products Data -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product_ID</th>
+            <th>Product_Img</th>
+            <th> Product_Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Edit Product</th>
+            <th>Delete Product</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of Products; let index = index">
+            <td>{{product.id}}</td>
+            <td><img src="{{product.url}}" alt=""></td>
+            <td>{{product.name}}</td>
+            <td>{{product.category}}</td>
+            <td>{{product.price}}$</td>
+            <td>
+                <button type="button" class="btn btn-secondary " (click)="edit(product)"
+                data-bs-toggle="modal" data-bs-target="#edit">
+                    Edit
+                </button>            
+                <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel2">Edit Product</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Edit Product Form-->
+                            <form class="row g-3" [formGroup]="Form" >
+                                <input type="number" hidden formControlName="id">
+                                <div class="form-group col-md-4">
+                                    <label for="name">Product_name</label>
+                                    <input formControlName="name"  type="text" class="form-control" id="name">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="category">Product_category</label>
+                                    <input formControlName="category"  type="text" class="form-control" id="category">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="price">Product_price</label>
+                                    <input formControlName="price" type="number" class="form-control" id="price">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <img  src="{{imgUrl}}" alt="">
+                                </div>
+                                <div class=" form-group col-md-6">
+                                    <label for="url">Choose photo</label>
+                                    <input  type="file"(change)="onChooseFile($event)" class="form-control-file" id="url" >
+                                </div>
+                                    
+                                <button (click)="updateProduct()" [disabled]="Form.invalid" type="submit" class="btn btn-secondary"  
+                                data-bs-dismiss="modal" > Update Product</button>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </td>
+            <td> <button class="btn btn-danger" (click)="deleteProduct(product)">
+                Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+
+                

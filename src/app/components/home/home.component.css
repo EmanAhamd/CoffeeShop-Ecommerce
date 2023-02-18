@@ -1,0 +1,24 @@
+.main-pic{
+    width: 350px;
+}
+.brown{
+    color: #722419 !important;
+}
+h1{
+    font-size: 3em;
+    text-shadow: -3px -1px 1px #f3d1a0;
+}
+.btn{
+    background-color: #faa55b !important;
+    border: none !important;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    width: 100px;
+    color: #722419;
+    font-size: larger;
+}
+.btn:hover{
+    background-color: white !important;
+    /* background-color: #cc9460 !important; */
+
+}
